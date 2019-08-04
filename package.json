@@ -31,7 +31,9 @@
 		"yeoman",
 		"generator",
 		"jade",
-		"yeoman-generator"
+		"yeoman-generator",
+		"gulp",
+		"gulp@4.0"
 	],
 	"devDependencies": {
 		"yeoman-test": "^1.7.0",

@@ -1,21 +1,9 @@
-# generator-yem
+<h1 align="center">Welcome to gulp-simple 👋</h1>
 
-> A generator for creating static sites with pug sass and babel
-
-## Installation
-
-First, install [Yeoman](http://yeoman.io) and generator-yem using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
-
-```bash
-npm install -g yo
-npm install -g generator-yem
-```
-
-Then generate your new project:
-
-```bash
-yo yem
-```
+[![gulp-simple](https://img.shields.io/badge/version-2.0.0-orange.svg?cacheSeconds=2592000)](https://github.com/ngocsangyem/HTML-Build-Tool)
+[![node](https://img.shields.io/badge/node-%3E%3D10.x.x-green.svg)](https://nodejs.org/en/)
+[![gulp](https://img.shields.io/badge/gulp-4.0.0-red.svg)](https://gulpjs.com/)
+![MIT license](https://img.shields.io/github/license/ngocsangyem/HTML-Build-Tool.svg)
 
 ## Features
 
@@ -202,11 +190,4 @@ The MIT License (MIT)
 
 Copyright (c) 2019 by ngocsangyem
 
-[npm-image]: https://badge.fury.io/js/generator-yem.svg
-[npm-url]: https://npmjs.org/package/generator-yem
-[travis-image]: https://travis-ci.org/ngocsangyem/generator-yem.svg?branch=master
-[travis-url]: https://travis-ci.org/ngocsangyem/generator-yem
-[daviddm-image]: https://david-dm.org/ngocsangyem/generator-yem.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/ngocsangyem/generator-yem
-[coveralls-image]: https://coveralls.io/repos/ngocsangyem/generator-yem/badge.svg
-[coveralls-url]: https://coveralls.io/r/ngocsangyem/generator-yem
+The document get from [justcoded](https://github.com/justcoded)
