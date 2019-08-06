@@ -1,5 +1,6 @@
+<% if (testFramework === 'mocha' || testFramework === 'jasmine') { %>
+import path from 'path';<% } %>
 import gulp from 'gulp';
-import path from 'path';
 import browserSyncLib from 'browser-sync';
 import cfg from './config';
 import minimist from 'minimist';
@@ -19,10 +20,10 @@ const args = minimist(process.argv.slice(2));
 const dirs = cfg.directories;
 const taskTarget = args.production ? dirs.destination : dirs.temporary;
 const config = Object.assign({}, cfg, defaultNotification);
-const $ = gulpLoadPlugins();
+const $ = gulpLoadPlugins();<% if (testFramework !== 'none') { %>
 
 // Create karma server
-const KarmaServer = require('karma').Server;
+const KarmaServer = require('karma').Server;<% } %>
 
 // BrowserSynce init
 const browserSync = browserSyncLib.create();
@@ -38,13 +39,13 @@ glob.sync('./tasks/**/*.js')
 gulp.task(
 	'serve',
 	gulp.series([
-		'clean',
-		'injectSass',
+		'clean'<% if (cssOption === 'sass') { %>,
+		'injectSass'<% } %>,
 		'injectJs',
 		gulp.parallel(
-			'sass',
-			'pug',
-			'browserify',
+			'sass'<% if (cssOption === 'sass') { %>,
+			'pug'<% } %><% if (htmlOption === 'pug') { %>,
+			'browserify'<% } %>,
 			'fonts',
 			'images',
 			'concatCss',
@@ -58,9 +59,9 @@ gulp.task(
 	'build',
 	gulp.series([
 		'clean',
-		gulp.parallel(
-			'pug',
-			'sass',
+		gulp.parallel(<% if (htmlOption === 'pug') { %>
+			'pug'<% } %><% if (cssOption === 'sass') { %>,
+			'sass'<% } %>,
 			'fonts',
 			'images',
 			'concatCss',
@@ -76,7 +77,7 @@ gulp.task(
 	])
 );
 
-gulp.task('lint', gulp.series('eslint'));
+gulp.task('lint', gulp.series('eslint'));<% if (testFramework === 'none') { %>);<% } else { %>
 
 gulp.task('test', function(done) {
 	KarmaServer.start(
@@ -89,4 +90,4 @@ gulp.task('test', function(done) {
 			done();
 		}
 	);
-});
+});<% } %>
