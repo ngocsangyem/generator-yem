@@ -1,7 +1,7 @@
 module.exports = {
-	scss: [
+	sass: [
 		{
-			input: `src/styles/sass/_include-${
+			input: `src/styles/sass/_includes-${
 				this.sassSyntax === 'sass' ? 'sass' : 'scss'
 			}/**/*`,
 			output: 'src/app/styles/_includes'

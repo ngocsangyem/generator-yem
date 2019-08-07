@@ -18,6 +18,12 @@ const promptsProject = [
 		// default: path.basename(process.cwd()) // Default to current folder name
 	},
 	{
+		type: 'input',
+		name: 'projectVersion',
+		message: 'Version',
+		default: '1.0.0'
+	},
+	{
 		type: 'list',
 		name: 'testFramework',
 		message: `Which JavaScript ${chalk.blue(

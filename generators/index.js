@@ -20,11 +20,56 @@ module.exports = class extends Generator {
 			this.option(optionName, options.options[optionName]);
 		}
 	}
-
+	initializing() {
+		this.pkg = require('../package.json');
+	}
 	prompting() {
 		const prompts = this.promptsFunc();
 		return this.prompt(prompts).then(answers => {
 			this.answers = answers;
+		});
+	}
+
+	writing() {
+		const copy = (input, output) => {
+			this.fs.copy(
+				this.templatePath(input),
+				this.destinationPath(output),
+				{ globOptions: { dot: true } }
+			);
+		};
+
+		const copyTpl = (input, output, data) => {
+			this.fs.copyTpl(
+				this.templatePath(input),
+				this.destinationPath(output),
+				data
+			);
+		};
+
+		// Render root
+		root.root.forEach(file => {
+			copy(file.input, file.output);
+		});
+
+		// Render assets
+		assets.assets.forEach(folder => {
+			mkdirp(folder);
+		});
+
+		// Render pug
+		pug.pugs.forEach(file => {
+			copy(file.input, file.output);
+		});
+
+		// Render sass
+		sass.sass.forEach(file => {
+			copyTpl(file.input, file.output, this.answers);
+		});
+
+		// Render gulp task
+		tasks.tasks.forEach(file => {
+			copyTpl(file.input, file.output, this.answers);
 		});
 	}
 };

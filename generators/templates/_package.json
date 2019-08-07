@@ -1,10 +1,9 @@
 {
 	"name": "<%= projectName %>",
-	"version": "1.0.0",
+	"version": "<%= projectVersion %>",
 	"description": "The build tool for Front-end using Gulp4",
 	"main": "index.js",
 	"dependencies": {
-		"swiper": "^4.5.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.5.5",
@@ -86,7 +85,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/ngocsangyem/gulp-simple.git"
+		"url": "git+<%= authorGithub %>.git"
 	},
 	"keywords": [
 		"nodejs",
@@ -100,10 +99,10 @@
 		"css",
 		"webpack"
 	],
-	"author": "ngocsangyem",
+	"author": "<%= authorName %>",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/ngocsangyem/gulp-simple/issues"
+		"url": "<%= authorGithub %>/issues"
 	},
-	"homepage": "https://github.com/ngocsangyem/gulp-simple#readme"
+	"homepage": "<%= authorGithub %>#readme"
 }

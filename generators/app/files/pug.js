@@ -9,8 +9,8 @@ module.exports = {
 			output: 'src/app/components/header/index.pug'
 		},
 		{
-			input: 'src/views/pug/_layout/**/*',
-			output: 'src/app/views/_layout'
+			input: 'src/views/pug/_layouts/**/*',
+			output: 'src/app/views/_layouts'
 		},
 		{
 			input: 'src/views/pug/index.pug',

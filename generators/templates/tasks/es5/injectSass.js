@@ -14,7 +14,7 @@ export default function(gulp, $, args, config, taskTarget, browserSync) {
 			.pipe(
 				$.plumber({
 					errorHandler: $.notify.onError(
-						'Error: <%= error.message %>'
+						'Something wrong with inject sass file!!'
 					)
 				})
 			)
@@ -28,8 +28,8 @@ export default function(gulp, $, args, config, taskTarget, browserSync) {
 							/\.[^.]*$/,
 							''
 						);
-						<% if (sassSyntax === 'scss') {return `@import '${pathRemoveExtension}';` }%>
-						return `@import ${pathRemoveExtension}`;
+						<% if (sassSyntax === 'scss') { %>return `@import '${pathRemoveExtension}';`
+						<% }%>return `@import ${pathRemoveExtension}`;
 					}
 				})
 			)

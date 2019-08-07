@@ -71,7 +71,6 @@ gulp.task(
 		'zip',
 		'rev',
 		'sitemap',
-		'author',
 		'size',
 		'done'
 	])
