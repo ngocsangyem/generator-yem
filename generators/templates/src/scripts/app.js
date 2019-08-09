@@ -1,7 +1,7 @@
 // inject:jsComponentFile
-const FooterIndex = require('../components/footer/index');
-const HeaderIndex = require('../components/header/index');
+const Footer = require('../components/footer/index');
+const Header = require('../components/header/index');
 // endinject
 
-new FooterIndex();
-new HeaderIndex();
+new Footer();
+new Header();

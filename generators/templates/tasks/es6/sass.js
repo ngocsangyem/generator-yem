@@ -38,8 +38,8 @@ export default function(gulp, $, args, config, taskTarget, browserSync) {
 				$.util.log(err);
 			})
 			.on('error', $.notify.onError(config.defaultNotification))
-			.pipe($.postcss(postCssPlugins))
-			.pipe($.if(!args.production, gcmq()))
+			.pipe($.if(args.production, $.postcss(postCssPlugins)))
+			.pipe($.if(args.production, gcmq()))
 			.pipe($.if(args.production, $.cssnano({ rebase: false })))
 			.pipe($.if(!args.production, $.sourcemaps.write('./')))
 			.pipe(gulp.dest(dest))

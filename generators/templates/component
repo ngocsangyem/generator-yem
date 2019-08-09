@@ -32,9 +32,7 @@ const extensions = uniqueArray(defaultExtensions.concat(process.argv.slice(3)));
 
 // If there is a component name
 if (componentName) {
-	const dirPath = `${dirs.source}/${dirs.app}/${
-		dirs.component
-	}/${componentName}/`; // full path to the created component folder
+	const dirPath = `${dirs.source}/${dirs.app}/${dirs.component}/${componentName}/`; // full path to the created component folder
 
 	if (fs.existsSync(dirPath)) {
 		console.log(colors.yellow(`This component has existed`));
@@ -59,16 +57,15 @@ if (componentName) {
 				} else if (extension === 'scss') {
 					fileContent = `// Colors of this file should follow the rule of colors in styles folder`;
 				} else if (extension === 'js') {
-					fileContent = `/* ES6 module */\n\nexport default class ${dirName +
-						fileName} {
-	constructor() { 
-		console.log('${dirName + fileName} component');
+					fileContent = `/* ES6 module */\n\nexport default class ${dirName} {
+	constructor() {
+		console.log('${dirName} component');
 	}
 };`;
 				} else if (extension === 'pug') {
 					fileContent = '';
 				} else if (extension === 'test.js') {
-					fileContent = `import ${(dirName + fileName).replace(
+					fileContent = `import ${dirName.replace(
 						/\.[^.]*$/,
 						''
 					)} from './index';

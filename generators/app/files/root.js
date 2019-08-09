@@ -1,6 +1,14 @@
 module.exports = {
 	root: [
 		{
+			input: 'src/assets/css/test.css',
+			output: 'src/assets/css/test.css'
+		},
+		{
+			input: 'src/assets/js/test.js',
+			output: 'src/assets/js/test.js'
+		},
+		{
 			input: '_config.json',
 			output: 'config.json'
 		},
@@ -47,6 +55,10 @@ module.exports = {
 		{
 			input: 'gulpfile.babel.js',
 			output: 'gulpfile.babel.js'
+		},
+		{
+			input: 'README.md',
+			output: 'README.md'
 		}
 	]
 };

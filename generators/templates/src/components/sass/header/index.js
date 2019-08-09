@@ -1,6 +1,6 @@
-const HeaderIndex = function() {
+const Header = function() {
 	this.name = 'Header';
 	console.log('%s module', this.name);
 };
 
-export default HeaderIndex;
+export default Header;

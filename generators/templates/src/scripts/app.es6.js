@@ -1,7 +1,7 @@
 // inject:jsComponentFile
-import FooterIndex from '../components/footer/index';
-import HeaderIndex from '../components/header/index';
+import Footer from '../components/footer/index';
+import Header from '../components/header/index';
 // endinject
 
-new FooterIndex();
-new HeaderIndex();
+new Footer();
+new Header();

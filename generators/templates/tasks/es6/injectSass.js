@@ -29,7 +29,7 @@ export default function(gulp, $, args, config, taskTarget, browserSync) {
 							''
 						);
 						<% if (sassSyntax === 'scss') { %>return `@import '${pathRemoveExtension}';`;
-						<%}%>return `@import ${pathRemoveExtension}`;
+						<% }  else if (sassSyntax === 'sass') { %>return `@import ${pathRemoveExtension}`;<% } %>
 					}
 				})
 			)

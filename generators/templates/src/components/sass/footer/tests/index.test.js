@@ -1,9 +1,9 @@
 /*eslint no-unused-expressions:0 */
-const FooterIndex = require('./index');
+const Footer = require('./index');
 
 describe('Footer View', function() {
 	beforeEach(() => {
-		this.footer = new FooterIndex();
+		this.footer = new Footer();
 	});
 
 	it('Should run a few assertions', () => {

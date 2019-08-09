@@ -1,6 +1,6 @@
-<h1 align="center">Welcome to gulp-simple 👋</h1>
+<h1 align="center">Welcome to <%= projectName %> 👋</h1>
 
-[![gulp-simple](https://img.shields.io/badge/version-2.0.0-orange.svg?cacheSeconds=2592000)](https://github.com/ngocsangyem/HTML-Build-Tool)
+[![<%= projectName %>](https://img.shields.io/badge/version-2.0.0-orange.svg?cacheSeconds=2592000)](https://github.com/ngocsangyem/HTML-Build-Tool)
 [![node](https://img.shields.io/badge/node-%3E%3D10.x.x-green.svg)](https://nodejs.org/en/)
 [![gulp](https://img.shields.io/badge/gulp-4.0.0-red.svg)](https://gulpjs.com/)
 ![MIT license](https://img.shields.io/github/license/ngocsangyem/HTML-Build-Tool.svg)
@@ -20,7 +20,7 @@
 
 ## Overview
 
-gulp-simple is an opinionated boilerplate for web development. Tools for building a great experience across many devices. A solid starting point for both professionals and newcomers to the industry.
+<%= projectName %> is an opinionated boilerplate for web development. Tools for building a great experience across many devices. A solid starting point for both professionals and newcomers to the industry.
 
 ## Browser Support
 
@@ -32,7 +32,7 @@ At present, I officially aim to support the last two versions of the following b
 -   Safari
 -   Internet Explorer
 
-This is not to say that gulp-simple cannot be used in browsers older than those reflected, but merely that my focus will be on ensuring our layouts work great in the above.
+This is not to say that <%= projectName %> cannot be used in browsers older than those reflected, but merely that my focus will be on ensuring our layouts work great in the above.
 
 ## Prerequisites
 
@@ -62,7 +62,7 @@ _This will install Gulp globally. Depending on your user account, you may need t
 
 ### Local dependencies
 
-Next, install the local dependencies gulp-simple requires:
+Next, install the local dependencies <%= projectName %> requires:
 
 ```sh
 $ npm install
@@ -74,7 +74,7 @@ or
 $ npm i
 ```
 
-That's it! You should now have everything needed to use the gulp-simple.
+That's it! You should now have everything needed to use the <%= projectName %>.
 
 You may also want to get used to some of the [commands](#commands) available.
 

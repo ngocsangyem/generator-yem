@@ -1,10 +1,10 @@
-module.exports = {
-	tasks: [
+function tasks(jsPreprocessor) {
+	return [
 		{
-			input: `tasks/es${
-				this.jsPreprocessor === 'none' ? '5' : '6'
-			}/**/*.js`,
+			input: `tasks/es${jsPreprocessor === 'none' ? '5' : '6'}/**/*.js`,
 			output: 'tasks'
 		}
-	]
-};
+	];
+}
+
+module.exports = tasks;

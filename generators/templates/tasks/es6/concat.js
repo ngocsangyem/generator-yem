@@ -12,18 +12,18 @@ export default function(gulp, $, args, config, taskTarget, browserSync) {
 	gulp.task('concatJs', () => {
 		return gulp
 			.src(url.scripts)
-			.pipe(strip())
+			.pipe($.if(args.production, strip()))
 			.pipe($.concat('core.js'))
-			.pipe($.terser())
+			.pipe($.if(args.production, $.terser()))
 			.pipe(gulp.dest(destJs));
 	});
 
 	gulp.task('concatCss', () => {
 		return gulp
 			.src(url.styles)
-			.pipe(stripCssComments())
+			.pipe($.if(args.production, stripCssComments()))
 			.pipe($.concat('core.css'))
-			.pipe($.cssnano())
+			.pipe($.if(args.production, $.cssnano()))
 			.pipe(gulp.dest(destCss));
 	});
 }

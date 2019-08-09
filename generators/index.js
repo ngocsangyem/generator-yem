@@ -11,11 +11,18 @@ const pug = require('./app/files/pug');
 const root = require('./app/files/root');
 const sass = require('./app/files/sass');
 const tasks = require('./app/files/tasks');
+const testing = require('./app/files/testing');
+const scripts = require('./app/files/scripts');
 
 module.exports = class extends Generator {
 	constructor(args, opts) {
 		super(args, opts);
-		this.promptsFunc = promptsFunc;
+
+		this.promptsFunc = promptsFunc.bind(this);
+		this.sassFunc = sass.bind(this);
+		this.tasksFunc = tasks.bind(this);
+		this.scriptsFunc = scripts.bind(this);
+
 		for (let optionName in options.options) {
 			this.option(optionName, options.options[optionName]);
 		}
@@ -27,10 +34,25 @@ module.exports = class extends Generator {
 		const prompts = this.promptsFunc();
 		return this.prompt(prompts).then(answers => {
 			this.answers = answers;
+			console.log(
+				this.answers.authorName,
+				this.answers.authorGithub,
+				this.answers.projectName,
+				this.answers.projectVersion,
+				this.answers.testFramework,
+				this.answers.htmlOption,
+				this.answers.jsPreprocessor,
+				this.answers.cssOption,
+				this.answers.sassSyntax
+			);
 		});
 	}
 
-	writing() {
+	async writing() {
+		const sassF = this.sassFunc(this.answers.sassSyntax);
+		const taslsF = this.tasksFunc(this.answers.jsPreprocessor);
+		const scriptsF = this.scriptsFunc(this.answers.jsPreprocessor);
+
 		const copy = (input, output) => {
 			this.fs.copy(
 				this.templatePath(input),
@@ -48,28 +70,47 @@ module.exports = class extends Generator {
 		};
 
 		// Render root
-		root.root.forEach(file => {
-			copy(file.input, file.output);
+		await root.root.forEach(file => {
+			copyTpl(file.input, file.output, this.answers);
 		});
 
 		// Render assets
-		assets.assets.forEach(folder => {
-			mkdirp(folder);
+		await assets.assets.forEach(folder => {
+			mkdirp(folder, function(err) {
+				if (err) console.error(err);
+			});
+		});
+
+		// Render testing file
+		await testing.testing.forEach(file => {
+			copyTpl(file.input, file.output, this.answers);
 		});
 
 		// Render pug
-		pug.pugs.forEach(file => {
-			copy(file.input, file.output);
+		await pug.pugs.forEach(file => {
+			copyTpl(file.input, file.output, this.answers);
 		});
 
 		// Render sass
-		sass.sass.forEach(file => {
+		await sassF.forEach(file => {
+			copyTpl(file.input, file.output, this.answers);
+		});
+
+		// Render scripts
+		await scriptsF.forEach(file => {
 			copyTpl(file.input, file.output, this.answers);
 		});
 
 		// Render gulp task
-		tasks.tasks.forEach(file => {
+		await taslsF.forEach(file => {
 			copyTpl(file.input, file.output, this.answers);
+		});
+	}
+
+	install() {
+		this.installDependencies({
+			bower: false,
+			skipInstall: this.options['skip-install']
 		});
 	}
 };
